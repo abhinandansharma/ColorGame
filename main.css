@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(44, 44, 44);
+    background-color: rgb(31, 30, 30);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,4 +18,8 @@ body {
 
 h1 {
     color: aliceblue;
+}
+
+#message {
+    color: white;
 }
