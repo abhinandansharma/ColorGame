@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(44, 44, 44);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.square {
+    width: 30%;
+    background: palevioletred;
+    padding-bottom: 30%;
+    float: left;
+    margin: 1.66%;
+}
+
+#container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: aliceblue;
+}
