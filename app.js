@@ -1,44 +1,48 @@
 
 var level = 6
+var selectedColor
 var colors = generateRandomColors(level)
+var pickedColor = colorPicker()
 var h1 = document.querySelector("h1")
 var squares = document.querySelectorAll(".square");
-var pickedColor = colorPicker()
 var displaySelected = document.getElementById("selected")
-var selectedColor 
 var messageDisplay = document.getElementById("message")
 var reset = document.getElementById("reset")
 var easy = document.getElementById("easy")
 var medium = document.getElementById("medium")
 var hard = document.getElementById("hard")
 
-displaySelected.textContent = pickedColor
-//loop to add color to all the squares and add event listners
-for(var i = 0; i < level; i++) {
-    // add initial colors to squares
-    squares[i].style.backgroundColor = colors[i]
-    squares[i].style.display = "block"
-}
-//hide extra squares
-for (var i = level; i < squares.length; i++) {
-    squares[i].style.display = "none"
-}
+init();
 
-// add Event Listeners to all squares
-for(var i = 0; i < squares.length; i++) {
-    squares[i].addEventListener("click", function () {
-        selectedColor = this.style.backgroundColor
-        if (selectedColor === pickedColor) {
-            messageDisplay.textContent = "Correct!"
-            changeColors(selectedColor)
-            h1.style.backgroundColor = selectedColor //changing the h1 bckground
-            reset.textContent = "Play Again" //changes reset button text to Play Again
-        }
-        else {
-            this.style.backgroundColor = "#1F1E1E";
-            messageDisplay.textContent = "Try Again"
-        }
-    })
+function init() {
+    displaySelected.textContent = pickedColor
+    //loop to add color to all the squares and add event listners
+    for (var i = 0; i < level; i++) {
+        // add initial colors to squares
+        squares[i].style.backgroundColor = colors[i]
+        squares[i].style.display = "block"
+    }
+    //hide extra squares
+    for (var i = level; i < squares.length; i++) {
+        squares[i].style.display = "none"
+    }
+
+    // add Event Listeners to all squares
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].addEventListener("click", function () {
+            selectedColor = this.style.backgroundColor
+            if (selectedColor === pickedColor) {
+                messageDisplay.textContent = "Correct!"
+                changeColors(selectedColor)
+                h1.style.backgroundColor = selectedColor //changing the h1 bckground
+                reset.textContent = "Play Again?" //changes reset button text to Play Again
+            }
+            else {
+                this.style.backgroundColor = "#1F1E1E";
+                messageDisplay.textContent = "Try Again"
+            }
+        })
+    }
 }
 
 //function to change all square colors on correct selection
@@ -122,7 +126,7 @@ function resetFunction() {
             squares[i].style.display = "none"
         }
         //change h1 background back to original
-        h1.style.backgroundColor = "rgb(31, 30, 30)";
+    h1.style.backgroundColor = "slateblue";
         //remove Disaplyed message
         messageDisplay.textContent = ""
 }
