@@ -5,10 +5,11 @@ body {
 
 .square {
     width: 30%;
-    background: palevioletred;
+    background-color: rgb(31, 30, 30);
     padding-bottom: 30%;
     float: left;
     margin: 1.66%;
+    border-radius: 12%;
 }
 
 #container {
@@ -28,4 +29,8 @@ h1 {
     background: white;
     height: 30px;
     text-align: center;
+}
+
+.selected {
+    background: blueviolet;
 }
