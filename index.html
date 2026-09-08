@@ -3,51 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <title>RGB Color Guessing Game</title>
+    <title>RGB Color Game</title>
+    <meta name="description" content="Pick the square that matches the RGB or hex value. Score, streaks, three lives a round, keyboard play. Plain JavaScript and CSS.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abhinandansharma.github.io/ColorGame/">
     <meta property="og:title" content="RGB Color Game">
-    <meta property="og:description" content="Guess which square matches the RGB value. Three difficulty levels, plain JavaScript and CSS.">
+    <meta property="og:description" content="Pick the square that matches the RGB or hex value. Score, streaks, three lives a round, keyboard play.">
     <meta property="og:image" content="https://abhinandansharma.github.io/ColorGame/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="@notjustadev">
-    <meta name="description" content="Guess which square matches the RGB value. Three difficulty levels. Plain JavaScript and CSS.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f1e1e'/%3E%3Crect x='10' y='10' width='20' height='20' rx='4' fill='%23ff5a5a'/%3E%3Crect x='34' y='10' width='20' height='20' rx='4' fill='%236a5acd'/%3E%3Crect x='10' y='34' width='20' height='20' rx='4' fill='%2350c878'/%3E%3Crect x='34' y='34' width='20' height='20' rx='4' fill='%23f0f8ff'/%3E%3C/svg%3E">
+    <meta name="theme-color" content="#0f0f0f">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f0f0f'/%3E%3Crect x='10' y='10' width='20' height='20' rx='5' fill='%23ff4d4d'/%3E%3Crect x='34' y='10' width='20' height='20' rx='5' fill='%2354d66a'/%3E%3Crect x='10' y='34' width='20' height='20' rx='5' fill='%234d8cff'/%3E%3Crect x='34' y='34' width='20' height='20' rx='5' fill='%23efe9dc'/%3E%3C/svg%3E">
+    <link rel="preload" href="fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css?v=2">
 </head>
 <body>
-<h1>Awesome 
-    <br>
-        <span id="selected">RGB</span>
-    <br> 
-    Color Guessing Game</h1>
+    <div class="game">
+        <header class="top">
+            <div class="brand"><span class="swatch"><i></i><i></i><i></i></span>RGB Color Game</div>
+            <div class="stats">
+                <div class="stat"><span class="stat-label">Score</span><b class="num" id="score">0</b></div>
+                <div class="stat"><span class="stat-label">Streak</span><b class="num" id="streak">0</b></div>
+                <div class="stat"><span class="stat-label">Best</span><b class="num" id="best">0</b></div>
+            </div>
+        </header>
 
-<div id="stripe">
-    <button id="reset">New Colors</button>
-    <span id="message"></span>
-    <span>
-        <button id="easy">Easy</button>
-        <button id="medium" class="selected">Medium</button>
-        <button id="hard">Hard</button>
-    </span>
-</div>
+        <main class="board">
+            <section class="target" aria-live="polite">
+                <p class="prompt" id="prompt">Which square is</p>
+                <h1 class="value num" id="value">rgb(0, 0, 0)</h1>
+                <div class="lives" id="lives" aria-label="Lives left"><i></i><i></i><i></i></div>
+            </section>
 
+            <div class="controls">
+                <div class="seg" role="tablist" aria-label="Difficulty">
+                    <button class="seg-btn" data-level="3" role="tab">Easy <small>3</small></button>
+                    <button class="seg-btn active" data-level="6" role="tab" aria-selected="true">Medium <small>6</small></button>
+                    <button class="seg-btn" data-level="9" role="tab">Hard <small>9</small></button>
+                </div>
+                <div class="seg" role="tablist" aria-label="Notation">
+                    <button class="seg-btn active" data-mode="rgb" role="tab" aria-selected="true">RGB</button>
+                    <button class="seg-btn" data-mode="hex" role="tab">HEX</button>
+                </div>
+                <button class="pill" id="new">New colours</button>
+            </div>
 
- <div id="container">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
- </div>
-    
-<a class="made-by" href="https://abhinandansharma.github.io/portfolio/" target="_blank" rel="noreferrer" aria-label="Made by Abhinandan Sharma. Opens the portfolio."><svg class="made-by-mark" viewBox="0 0 512 512" width="20" height="20" aria-hidden="true"><defs><clipPath id="mb-clip"><rect width="512" height="512" rx="112"/></clipPath></defs><rect width="512" height="512" rx="112" fill="#e0202a"/><g clip-path="url(#mb-clip)"><path d="M256 78 C156 78 100 154 100 254 L100 540 L412 540 L412 254 C412 154 356 78 256 78 Z" fill="#0b0b0b"/><path d="M404 206 Q470 178 518 132 Q492 224 410 252 Z" fill="#0b0b0b"/><path d="M406 232 Q468 240 512 292 Q462 262 408 250 Z" fill="#0b0b0b"/><path d="M118 232 Q256 196 394 232 L394 262 Q256 304 118 262 Z" fill="#f1ede4"/><path d="M152 248 L238 234 L242 270 L166 280 Z" fill="#0b0b0b"/><path d="M360 248 L274 234 L270 270 L346 280 Z" fill="#0b0b0b"/></g></svg><span>Made by <b>Abhinandan</b></span></a>
-<script src="app.js"></script>
+            <div class="grid" id="grid" data-level="6"></div>
+
+            <p class="message" id="message" aria-live="polite">Pick a square, or press 1 to 9.</p>
+        </main>
+
+        <footer class="foot">
+            <span>Built with plain JavaScript. Best streak is saved in this browser.</span>
+            <a href="https://github.com/abhinandansharma/ColorGame" target="_blank" rel="noreferrer">Source</a>
+        </footer>
+    </div>
+    <a class="made-by" href="https://abhinandansharma.github.io/portfolio/" target="_blank" rel="noreferrer" aria-label="Made by Abhinandan Sharma. Opens the portfolio."><svg class="made-by-mark" viewBox="0 0 512 512" width="20" height="20" aria-hidden="true"><defs><clipPath id="mb-clip"><rect width="512" height="512" rx="112"/></clipPath></defs><rect width="512" height="512" rx="112" fill="#e0202a"/><g clip-path="url(#mb-clip)"><path d="M256 78 C156 78 100 154 100 254 L100 540 L412 540 L412 254 C412 154 356 78 256 78 Z" fill="#0b0b0b"/><path d="M404 206 Q470 178 518 132 Q492 224 410 252 Z" fill="#0b0b0b"/><path d="M406 232 Q468 240 512 292 Q462 262 408 250 Z" fill="#0b0b0b"/><path d="M118 232 Q256 196 394 232 L394 262 Q256 304 118 262 Z" fill="#f1ede4"/><path d="M152 248 L238 234 L242 270 L166 280 Z" fill="#0b0b0b"/><path d="M360 248 L274 234 L270 270 L346 280 Z" fill="#0b0b0b"/></g></svg><span>Made by <b>Abhinandan</b></span></a>
+    <script src="app.js?v=2"></script>
 </body>
 </html>

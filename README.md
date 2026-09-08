@@ -1,4 +1,6 @@
-# Awesome Color Guessing Game.
+# RGB Color Game
+
+Pick the square that matches the RGB or hex value. Score, streaks, three lives a round, keyboard play (1 to 9, Enter for the next round), and a grid of 3, 6 or 9 colours. Plain JavaScript and CSS, numerals in Geist Pixel.
 <strong>Fully responsive
 
 ## Three basic modes - 
