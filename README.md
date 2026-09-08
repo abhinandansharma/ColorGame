@@ -7,7 +7,7 @@
 ### 1) HARD -    choose from "9" different colors
 
 #### Guess the color of the given RGB value.
-[codepen](https://codepen.io/abhinandansharma/pen/VweErOz)
+**[Play it](https://abhinandansharma.github.io/ColorGame/)** · [CodePen version](https://codepen.io/abhinandansharma/pen/VweErOz)
 
 ## EASY
 <img src="images/easy.png"> </img>
