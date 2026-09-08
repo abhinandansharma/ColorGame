@@ -56,6 +56,10 @@
         squares.forEach((sq, i) => {
             sq.className = 'sq';
             sq.style.setProperty('--c', toRgb(state.colors[i]));
+            sq.style.setProperty('--n', i);
+            // restart the pop-in animation
+            void sq.offsetWidth;
+            sq.classList.add('in');
         });
         valueEl.textContent = label(state.colors[state.answer]);
         promptEl.textContent = 'Which square is';
