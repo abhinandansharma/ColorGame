@@ -1,29 +1,30 @@
 # RGB Color Game
 
-Pick the square that matches the RGB or hex value. Score, streaks, three lives a round, keyboard play (1 to 9, Enter for the next round), and a grid of 3, 6 or 9 colours. Plain JavaScript and CSS, numerals in Geist Pixel.
-<strong>Fully responsive
+Pick the square that matches the RGB or hex value. Three lives a round, a score that rewards first-try guesses, a streak with your best saved in the browser, and a grid of 3, 6 or 9 colours.
 
-## Three basic modes - 
-### 1) EASY -    choose from "3" different colors
-### 1) MEDIUM -  choose from "6" different colors
-### 1) HARD -    choose from "9" different colors
+**[Play it](https://abhinandansharma.github.io/ColorGame/)**
 
-#### Guess the color of the given RGB value.
-**[Play it](https://abhinandansharma.github.io/ColorGame/)** · [CodePen version](https://codepen.io/abhinandansharma/pen/VweErOz)
+![RGB Color Game, medium difficulty](images/medium.png)
 
-## EASY
-<img src="images/easy.png"> </img>
+## How to play
 
-## MEDIUM
-<img src="images/medium.png"> </img>
+- The value at the top is the colour you are looking for. Switch between **RGB** and **HEX** notation at any time.
+- Click a square, or press **1 to 9**. A wrong square drops out and costs a life; the message tells you how far off you were.
+- Get it right and every square, and the page, turns that colour. **Enter** or **Next** starts a new round.
+- **Easy**, **Medium** and **Hard** change the grid to 3, 6 or 9 squares. Harder grids score more.
 
-## HARD
-<img width="1920" height="931" alt="hard" src="https://github.com/user-attachments/assets/cfec28b0-7e63-419d-92bb-f157e7630838" />
+## Hard mode and a win
 
-### To play locally, just clone it and open index.html file in your browser.
+![Hard mode](images/hard.png)
 
-### Clone it 👇
-<code> https://github.com/abhinandansharma/ColorGame.git </code>
+![A correct guess fills the page with the colour](images/correct.png)
 
-#### Thanks for checking this out!
+## Stack
 
+Plain HTML, CSS and JavaScript, no dependencies. Space Grotesk for text and [Geist Pixel](https://vercel.com/font) (Square) for the values, self-hosted. Best streak is stored in `localStorage`.
+
+## Run it locally
+
+Clone the repository and open `index.html` in a browser. The original 2020 version lives on [CodePen](https://codepen.io/abhinandansharma/pen/VweErOz).
+
+Built by [Abhinandan Sharma](https://abhinandansharma.github.io/portfolio/).
