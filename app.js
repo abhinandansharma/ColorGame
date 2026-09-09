@@ -46,6 +46,7 @@
     const squares = Array.from(grid.children);
 
     function newRound() {
+        if (document.activeElement && document.activeElement.classList.contains('sq')) document.activeElement.blur();
         state.colors = Array.from({ length: 9 }, randomColor);
         state.answer = rand(state.level);
         state.lives = 3;
@@ -136,7 +137,7 @@
     newBtn.addEventListener('click', newRound);
     document.addEventListener('keydown', (e) => {
         if (e.key >= '1' && e.key <= '9') guess(Number(e.key) - 1);
-        else if (e.key === 'Enter' && state.locked) newRound();
+        else if (e.key === 'Enter' && state.locked) { e.preventDefault(); newRound(); } // preventDefault: a square clicked earlier may still have focus, and Enter would click it again
         else if (e.key.toLowerCase() === 'n') newRound();
     });
 
