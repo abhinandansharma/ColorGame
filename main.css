@@ -71,23 +71,23 @@ body.win .prompt, body.win .stat-label, body.win .message, body.win .foot { colo
 .message.good { color: var(--fg); }
 
 /* footer */
-.foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.9rem 0 0 12rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
-.foot a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.9rem 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
+.foot > span { margin-left: auto; }
+.foot a:not(.made-by) { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 560px) {
     .grid { gap: 0.6rem; }
     .stats { width: 100%; }
     .stat { flex: 1; justify-content: center; }
-    .foot { padding: 0.9rem 0 3.5rem; }
+    .foot > span { margin-left: 0; width: 100%; order: 3; }
     .grid { width: 100%; aspect-ratio: auto; grid-template-rows: none; }
     .grid[data-level="3"] .sq:nth-child(n+4), .grid[data-level="6"] .sq:nth-child(n+7) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .sq, body { transition: none; } .sq.shake, .sq.in { animation: none; } }
 
-/* made-by badge (identical across every project; keep in sync) */
-.made-by { position: fixed; left: 18px; bottom: 18px; z-index: 950; display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px; border-radius: 999px; background: #0b0b0b; color: #f1ede4; border: 1px solid #262626; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 400; line-height: 1; letter-spacing: 0; text-decoration: none; transition: background-color 0.2s, opacity 0.3s; }
+/* made-by badge (identical across every project; keep in sync). It lives in the page footer, never fixed, so it covers nothing. */
+.made-by { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px; border-radius: 999px; background: #0b0b0b; color: #f1ede4; border: 1px solid #262626; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 400; line-height: 1; letter-spacing: 0; text-decoration: none; white-space: nowrap; flex: 0 0 auto; transition: background-color 0.2s, opacity 0.3s; }
 .made-by b { font-weight: 600; color: inherit; }
 .made-by-mark { display: block; border-radius: 6px; transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1); }
 .made-by:hover { background: #1c1c1c; color: #f1ede4; }
 .made-by:hover .made-by-mark { transform: rotate(-8deg) scale(1.08); }
-@media (max-width: 560px) { .made-by { left: 12px; bottom: 12px; } }
